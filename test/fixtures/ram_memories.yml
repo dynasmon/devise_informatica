@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: ram_memories
+#
+#  id         :bigint           not null, primary key
+#  name       :string(255)
+#  size_gb    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+one:
+  brand: MyString
+  model: MyString
+
+two:
+  brand: MyString
+  model: MyString

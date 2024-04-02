@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: video_cards
+#
+#  id         :bigint           not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+one:
+  brand: MyString
+  model: MyString
+
+two:
+  brand: MyString
+  model: MyString

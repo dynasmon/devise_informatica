@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  email: MyString
+
+two:
+  name: MyString
+  email: MyString

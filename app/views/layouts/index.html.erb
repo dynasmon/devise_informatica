@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Computer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Create Computer</h1>
+    
+    <form id="computerForm">
+
+      <label for="motherboard">Motherboard:</label>
+      <select id="motherboard" name="motherboard">
+       
+      </select>
+
+      <label for="processor">Processor:</label>
+      <select id="processor" name="processor">
+        
+      </select>
+
+      <label for="ramMemory">RAM Memory:</label>
+      <select id="ramMemory" name="ramMemory">
+        
+      </select>
+
+      <label for="videoCard">Video Card:</label>
+      <select id="videoCard" name="videoCard">
+        
+      </select>
+
+      <button type="submit">Create Computer</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      //fetch
+      fetch('http://127.0.0.1:3000/processors/')
+        .then(response => response.json())
+        .then(processors => {
+          const processorDropdown = document.getElementById('processor');
+          processors.forEach(processor => {
+            const option = document.createElement('option');
+            option.value = processor.id;
+            option.textContent = processor.name;
+            processorDropdown.appendChild(option);
+          });
+        });
+
+      fetch('http://127.0.0.1:3000/mother_boards/')
+        .then(response => response.json())
+        .then(motherboards => {
+          const motherboardDropdown = document.getElementById('motherboard');
+          motherboards.forEach(motherboard => {
+            const option = document.createElement('option');
+            option.value = motherboard.id;
+            option.textContent = motherboard.name;
+            motherboardDropdown.appendChild(option);
+          });
+        });
+
+      fetch('http://127.0.0.1:3000/ram_memorys/')
+        .then(response => response.json())
+        .then(ramMemories => {
+          const ramMemoryDropdown = document.getElementById('ramMemory');
+          ramMemories.forEach(ramMemory => {
+            const option = document.createElement('option');
+            option.value = ramMemory.id;
+            option.textContent = `${ramMemory.name} - ${ramMemory.size_gb} GB`;
+            ramMemoryDropdown.appendChild(option);
+          });
+        });
+
+      fetch('http://127.0.0.1:3000/video_cards/')
+        .then(response => response.json())
+        .then(videoCards => {
+          const videoCardDropdown = document.getElementById('videoCard');
+          videoCards.forEach(videoCard => {
+            const option = document.createElement('option');
+            option.value = videoCard.id;
+            option.textContent = videoCard.name;
+            videoCardDropdown.appendChild(option);
+          });
+        });
+
+      
+      document.getElementById('computerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Handle form submission here
+      });
+    });
+  </script>
+</body>
+</html>

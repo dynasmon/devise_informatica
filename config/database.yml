@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: developer
+  password: 12345678
+  host: localhost
+
+development:
+  <<: *default
+  database: devise_database
+
+test:
+  <<: *default
+  database: devise_database_test
+
+production:
+  <<: *default
+  database: devise_production
+  username: developer # Atualize este campo se o nome de usuário do banco de dados for diferente no ambiente de produção
+  password: <%= ENV['NOME_DO_USUARIO_DATABASE_PASSWORD'] %> # Certifique-se de configurar corretamente as variáveis de ambiente para a senha no ambiente de produção
+  host: <%= ENV['NOME_DO_SEU_HOST'] %> # Certifique-se de configurar corretamente as variáveis de ambiente para o host do banco de dados no ambiente de produção
